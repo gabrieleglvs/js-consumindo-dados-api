@@ -1,12 +1,9 @@
-var consultaCEP = fetch('https://viacep.com.br/ws/01001000/json/')
-.then(resposta => resposta.json())
-.then(rJSON => {
-    if (rJSON.erro) {
-        throw Error('Esse cep não existe!') //O erro do cep inválido vem no próprio Then, por isso tratamos aqui.
-    } else 
-    console.log(rJSON)
-})
-.catch(erro => console.log(erro)) //esse é um erro de rejected.
-.finally(mensagem => console.log('Processamento concluído!')) //independente da resposta
+async function buscaEndereco() {
+    var consultaCEP = await fetch('https://viacep.com.br/ws/01001000/json/')
 
-console.log(consultaCEP)
+    var consultaCEPConvertida = await consultaCEP.json();
+
+    console.log(consultaCEPConvertida)
+}
+
+buscaEndereco();
