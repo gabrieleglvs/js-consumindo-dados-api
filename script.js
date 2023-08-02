@@ -1,4 +1,4 @@
-var consultaCEP = fetch('https://viacep.com.br/ws/01001250/json/')
+var consultaCEP = fetch('https://viacep.com.br/ws/01001000/json/')
 .then(resposta => resposta.json())
 .then(rJSON => {
     if (rJSON.erro) {
@@ -6,6 +6,7 @@ var consultaCEP = fetch('https://viacep.com.br/ws/01001250/json/')
     } else 
     console.log(rJSON)
 })
-.catch(erro => console.log(erro)); //esse é um erro de rejected.
+.catch(erro => console.log(erro)) //esse é um erro de rejected.
+.finally(mensagem => console.log('Processamento concluído!')) //independente da resposta
 
 console.log(consultaCEP)
